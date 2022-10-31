@@ -1,15 +1,15 @@
 /*
 	Author	 	:Palash
 	Topic 		:Number Theory
-	Problem 	:[Optimized - Sieve of Eratosthenes] Generate Prime Numbers .
-	Complexity	:O( n*ln(n) ) but more optimized
+	Problem 	:SPOJ - TDPRIMES - Printing some primes
+	Link 		:https://www.spoj.com/problems/TDPRIMES/
 */
 
 #include<bits/stdc++.h>
 using namespace std;
 #define optimize() ios_base::sync_with_stdio(0);cin.tie(0);cout.tie(0);
 
-const int mx = 1e7+123;
+const int mx = 1e8+123;
 // bool isPrime[mx];
 bitset<mx>isPrime;
 vector<int>primes;
@@ -39,22 +39,14 @@ void primeGenerator( int n){
 
 int main(){
 	optimize();
-	int n;
-	cin>>n;
-	primeGenerator(n);
+	// int n;
+	// cin>>n;
+	primeGenerator(1e8);
 
-	for(auto u : primes){
-		cout<< u << " ";
+	for(int i=0; i<primes.size(); i+=100){
+		cout<< primes[i] <<endl;
 	}
 	cout<<endl;
 
 	
 }
-
-/*
-Input: 
-	150
-
-Output:
-	2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 
-*/

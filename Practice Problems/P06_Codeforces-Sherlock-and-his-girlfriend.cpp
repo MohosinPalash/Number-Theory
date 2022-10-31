@@ -1,8 +1,8 @@
 /*
 	Author	 	:Palash
 	Topic 		:Number Theory
-	Problem 	:[Optimized - Sieve of Eratosthenes] Generate Prime Numbers .
-	Complexity	:O( n*ln(n) ) but more optimized
+	Problem 	:Codeforces - Sherlock and his girlfriend
+	Link 		:https://codeforces.com/contest/776/problem/B
 */
 
 #include<bits/stdc++.h>
@@ -41,20 +41,38 @@ int main(){
 	optimize();
 	int n;
 	cin>>n;
-	primeGenerator(n);
+	primeGenerator(1e5);
 
-	for(auto u : primes){
-		cout<< u << " ";
+	int color =1;
+	if(n>2)
+		color=2;
+	vector<int>v(n);
+	for(int i=0; i<n; i++){
+		if(isPrime[i+2] == 1)
+			v[i] = 1;
+		else
+			v[i] = 2;
 	}
-	cout<<endl;
+	cout<<color<<endl;
+	for(int i=0; i<n; i++){
+		cout<<v[i]<< " ";
+	}
 
 	
 }
 
 /*
+Test case - 01:
 Input: 
-	150
-
+	3
 Output:
-	2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 
+	2
+	1 1 2 
+
+Test case - 02:
+Input: 
+	4
+Output:
+	2
+	1 1 2 1 
 */

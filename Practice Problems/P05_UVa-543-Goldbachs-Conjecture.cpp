@@ -1,8 +1,8 @@
 /*
 	Author	 	:Palash
 	Topic 		:Number Theory
-	Problem 	:[Optimized - Sieve of Eratosthenes] Generate Prime Numbers .
-	Complexity	:O( n*ln(n) ) but more optimized
+	Problem 	:UVa - 543 - Goldbach's Conjecture
+	Link 		:https://codeforces.com/problemset/problem/17/A
 */
 
 #include<bits/stdc++.h>
@@ -40,21 +40,43 @@ void primeGenerator( int n){
 int main(){
 	optimize();
 	int n;
-	cin>>n;
-	primeGenerator(n);
+	// cin>>n;
+	primeGenerator(1e6);
 
-	for(auto u : primes){
-		cout<< u << " ";
+	while(cin >> n){
+		
+		if(n==0)
+			break;
+		int a =-1, b=-1, f=0;
+		for(auto u: primes){
+			if(u > n) break;
+			a=u;
+			b= n-u;
+			if(isPrime[b] == 1 && b>2){
+				f=1;
+				break;
+			}
+		}
+		if(f==1)
+			cout<< n << " = "<< a << " + "<< b<<endl;
+		else
+			cout<< "‘Goldbach's conjecture is wrong."<<endl;
+
 	}
-	cout<<endl;
 
 	
 }
 
 /*
+Test case - 01:
 Input: 
-	150
+	8
+	20
+	42
+	0
 
 Output:
-	2 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101 103 107 109 113 127 131 137 139 149 
+	8 = 3 + 5
+	20 = 3 + 17
+	42 = 5 + 37
 */
